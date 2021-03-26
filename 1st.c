@@ -1,28 +1,31 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
+//bit reversal function.
+int reverse_bits(int n){
+  return n^(~0);
+}
 //function to print bits.
-void print_bits(uint8_t a)
-{
-    uint8_t i;
-
-    for(i=0x80;i!=0;i>>=1)
-        printf("%c",(a&i)?'1':'0'); 
+void print_bits(int x) {
+  int wl = sizeof(int)*2-1;
+  unsigned mask;
+  for (mask = 1<<wl; mask; mask >>= 1)
+    putchar(x&mask ? '1' : '0');
+  putchar('\n');
 }
 
+int main(){
+  
+  
+  
+  int n, m;
+  printf("Enter a Number:\n");
+  //Read a number from user
+  scanf("%d",&n);
+  //call the function to print bits before reverse
+  print_bits(n);
+// call the funtion to reverse bits and store it into m
+  m= reverse_bits(n);
+  //call the function to print reversed bits.
+  print_bits(m);
 
-int main(void)
-{
-    uint32_t k=0xDEADBEEF;
-
-    uint8_t *x;
-
-    int n,i;
-
-    printf("Enter a Number:\t");
-    //read input from user
-    scanf("%d",&n);
-    //call the function to print in bits.
-    print_bits(n);
-    return 0;
+  return 0;
 }
