@@ -1,27 +1,24 @@
-#include <stdlib.h>
-#include <stdint.h>
-//function to print bits.
-void print_bits(uint8_t a)
+#include <stdio.h>
+int main()
 {
-    uint8_t i;
+  int n, c, k;
 
-    for(i=0x80;i!=0;i>>=1)
-        printf("%c",(a&i)?'1':'0'); 
-}
+  printf("Enter an integer in decimal number system\n");
+  scanf("%d", &n);
 
+  printf("%d in binary number system is:\n", n);
 
-int main(void)
-{
-    uint32_t k=0xDEADBEEF;
+  for (c = 15; c >= 0; c--)
+  {
+    k = n >> c;
 
-    uint8_t *x;
+    if (k & 1)
+      printf("1");
+    else
+      printf("0");
+  }
 
-    int n,i;
+  printf("\n");
 
-    printf("Enter a Number:\t");
-    //read input from user
-    scanf("%d",&n);
-    //call the function to print in bits.
-    print_bits(n);
-    return 0;
+  return 0;
 }
